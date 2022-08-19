@@ -1,0 +1,26 @@
+Given a signed 32-bit integer x, return x with its digits reversed.
+If reversing x causes the value to go outside the signed 32-bit integer range [-231, 231 - 1], then return 0.
+
+
+
+
+class Solution {
+    public int reverse(int x) {
+        long k = x;
+        boolean isNegtive = false;        
+        if(k < 0){
+            k = 0 - k;
+            isNegtive = true;
+        }
+
+        long result = 0;
+        while(k != 0){
+            result *= 10;
+            result += k % 10;
+            k /= 10;
+        }
+
+        if(result > Integer.MAX_VALUE) return 0;
+        return isNegtive  ? 0 - ((int)result) : (int)result;
+    }
+}
